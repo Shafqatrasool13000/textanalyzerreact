@@ -5,11 +5,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
 
-
   const [show, setShow] = useState(false)
-  const { title, about, mode, toggleMode ,toggleRed,toggleGreen} = props;
-
-
+  const { title, about, mode, toggleMode } = props;
   return (
     <>
       <nav className={`navbar navbar-expand-lg navbar-${mode === 'dark' ? 'dark' : 'light'} bg-${mode === 'dark' ? 'dark' : 'light'}`}>
@@ -21,36 +18,26 @@ export default function Navbar(props) {
           <div className={`collapse navbar-collapse ${show ? 'show' : ''}`} >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link " aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">{about}</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Contact Us</a>
+                <a className="nav-link" href="/">Contact Us</a>
               </li>
 
             </ul>
-           
-            <div className={`form-check form-switch text-${mode === 'dark' ? 'white' : "dark"}`}>
-              <input className="form-check-input" onClick={toggleMode} type="checkbox" id="flexSwitchCheckDefault" />
-              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {mode === 'dark' ? 'light' : "dark"} mode</label>
-            </div>
-            <div className={`form-check form-switch text-${mode === 'dark' ? 'white' : "dark"}`}>
-              <input className="form-check-input" onClick={toggleRed} type="checkbox" id="flexSwitchCheckDefault" />
-              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {mode === 'dark' ? 'light' : "red"} mode</label>
-            </div>
-            <div className={`form-check form-switch text-${mode === 'dark' ? 'white' : "dark"}`}>
-              <input className="form-check-input" onClick={toggleGreen} type="checkbox" id="flexSwitchCheckDefault" />
-              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {mode === 'dark' ? 'light' : "green"} mode</label>
-            </div>
-            
-            {/* <form className='d-flex'>
-              <input className="form-control me-2" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" >Search</button>
 
-            </form> */}
+            <div className="d-flex ">
+
+            <div className="bg-primary mx-2" style={{width:'2rem',height:'2rem'}} onClick={()=>{toggleMode('primary')}}></div>
+            <div className="bg-danger mx-2" style={{width:'2rem',height:'2rem'}} onClick={()=>{toggleMode('danger')}}></div>
+            <div className="bg-success mx-2" style={{width:'2rem',height:'2rem'}} onClick={()=>{toggleMode('success')}}></div>
+            <div className="bg-warning mx-2" style={{width:'2rem',height:'2rem'}} onClick={()=>{toggleMode('warning')}}></div>
           </div>
+            </div>
+          
         </div>
       </nav>
     </>
@@ -63,6 +50,6 @@ Navbar.propTypes = {
 
 }
 Navbar.defaultProps = {
-  title: 'textUtils',
+  title: 'TextAnalyzer',
   about: 'About'
 }
